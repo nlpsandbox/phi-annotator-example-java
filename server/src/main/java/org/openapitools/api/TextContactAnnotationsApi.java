@@ -6,9 +6,9 @@
 package org.openapitools.api;
 
 import org.openapitools.model.Error;
-import org.openapitools.model.TextDateAnnotation;
-import org.openapitools.model.TextDateAnnotationRequest;
-import org.openapitools.model.TextDateAnnotationResponse;
+import org.openapitools.model.TextContactAnnotation;
+import org.openapitools.model.TextContactAnnotationRequest;
+import org.openapitools.model.TextContactAnnotationResponse;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,44 +25,44 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import org.example.DateAnnotator;
+import org.example.ContactAnnotator;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-08-11T13:52:26.252409-07:00[America/Los_Angeles]")
 @Validated
-@Api(value = "textDateAnnotations", description = "the textDateAnnotations API")
-public interface TextDateAnnotationsApi {
+@Api(value = "textContactAnnotations", description = "the textContactAnnotations API")
+public interface TextContactAnnotationsApi {
 
     default Optional<NativeWebRequest> getRequest() {
         return Optional.empty();
     }
 
     /**
-     * POST /textDateAnnotations : Annotate dates in a clinical note
-     * Return the date annotations found in a clinical note
+     * POST /textContactAnnotations : Annotate contact information in a clinical note
+     * Return the contact annotations found in a clinical note
      *
-     * @param textDateAnnotationRequest  (optional)
+     * @param textContactAnnotationRequest  (optional)
      * @return Success (status code 200)
      *         or Invalid request (status code 400)
      *         or The request cannot be fulfilled due to an unexpected server error (status code 500)
      */
-    @ApiOperation(value = "Annotate dates in a clinical note", nickname = "createTextDateAnnotations", notes = "Return the date annotations found in a clinical note", response = TextDateAnnotationResponse.class, tags={ "TextDateAnnotation", })
+    @ApiOperation(value = "Annotate contact information in a clinical note", nickname = "createTextContactAnnotations", notes = "Return the contact annotations found in a clinical note", response = TextContactAnnotationResponse.class, tags={ "TextContactAnnotation", })
     @ApiResponses(value = {
-        @ApiResponse(code = 200, message = "Success", response = TextDateAnnotationResponse.class),
+        @ApiResponse(code = 200, message = "Success", response = TextContactAnnotationResponse.class),
         @ApiResponse(code = 400, message = "Invalid request", response = Error.class),
         @ApiResponse(code = 500, message = "The request cannot be fulfilled due to an unexpected server error", response = Error.class) })
     @PostMapping(
-        value = "/textDateAnnotations",
+        value = "/textContactAnnotations",
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<TextDateAnnotationResponse> createTextDateAnnotations(@ApiParam(value = ""  )  @Valid @RequestBody(required = false) TextDateAnnotationRequest textDateAnnotationRequest) {
-        String text = textDateAnnotationRequest.getNote().getText();
-        List<TextDateAnnotation> annotations = new DateAnnotator()
+    default ResponseEntity<TextContactAnnotationResponse> createTextContactAnnotations(@ApiParam(value = ""  )  @Valid @RequestBody(required = false) TextContactAnnotationRequest textContactAnnotationRequest) {
+        String text = textContactAnnotationRequest.getNote().getText();
+        List<TextContactAnnotation> annotations = new ContactAnnotator()
             .annotate(text);
-        TextDateAnnotationResponse res = new TextDateAnnotationResponse()
-            .textDateAnnotations(annotations);
+        TextContactAnnotationResponse res = new TextContactAnnotationResponse()
+            .textContactAnnotations(annotations);
 
-        return new ResponseEntity<TextDateAnnotationResponse>(res, HttpStatus.OK);
+        return new ResponseEntity<TextContactAnnotationResponse>(res, HttpStatus.OK);
     }
 
 }

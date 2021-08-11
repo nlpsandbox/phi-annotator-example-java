@@ -1,10 +1,10 @@
 [![nlpsandbox.io](https://nlpsandbox.github.io/nlpsandbox-themes/banner/Banner@3x.png)](https://nlpsandbox.io)
 
-# NLP Sandbox Date Annotator Example for Java
+# NLP Sandbox PHI Annotator Example for Java
 
-[![GitHub Release](https://img.shields.io/github/release/nlpsandbox/date-annotator-example-java.svg?include_prereleases&color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/nlpsandbox/date-annotator-example-java/releases)
-[![GitHub CI](https://img.shields.io/github/workflow/status/nlpsandbox/date-annotator-example-java/CI.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/nlpsandbox/date-annotator-example-java/actions)
-[![GitHub License](https://img.shields.io/github/license/nlpsandbox/date-annotator-example-java.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/nlpsandbox/date-annotator-example-java/blob/main/LICENSE)
+[![GitHub Release](https://img.shields.io/github/release/nlpsandbox/phi-annotator-example-java.svg?include_prereleases&color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/nlpsandbox/phi-annotator-example-java/releases)
+[![GitHub CI](https://img.shields.io/github/workflow/status/nlpsandbox/phi-annotator-example-java/CI.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/nlpsandbox/phi-annotator-example-java/actions)
+[![GitHub License](https://img.shields.io/github/license/nlpsandbox/phi-annotator-example-java.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/nlpsandbox/phi-annotator-example-java/blob/main/LICENSE)
 [![Docker](https://img.shields.io/badge/docker-blue.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=nlpsandbox&logo=data:image/svg%2bxml;base64,PHN2ZyByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtMy4yIDcuOS0xLjctMXYxMS40bDkuOSA1LjdWMTIuNkw1LjYgOS4zIDMuMiA3Ljl6bTE3LjEtMS4zIDEuNS0uOUwxMiAwIDIuMiA1LjdsMi42IDEuNS4xLjEgMS43IDEgNS41IDMuMiA1LjEtMyAzLjEtMS45ek0xMiA5LjUgOS4zIDcuOSA3LjQgNi44bC0xLjctMS0uMS0uMWgtLjFMMTIgMS45bDYuNSAzLjhMMTYuMyA3IDEyIDkuNXptOC44LTEuNi0yLjQgMS40LS41LjItNS4zIDMuMVYyNGw5LjktNS43VjYuOWwtMS43IDF6IiBmaWxsPSIjZmZmIi8+PC9zdmc+)](https://www.synapse.org/#!Synapse:syn25830787 "Get the Docker image of this tool on NLPSandbox.io")
 [![Leaderboard](https://img.shields.io/badge/leaderboard-blue.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=nlpsandbox&logo=data:image/svg%2bxml;base64,PHN2ZyByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtMy4yIDcuOS0xLjctMXYxMS40bDkuOSA1LjdWMTIuNkw1LjYgOS4zIDMuMiA3Ljl6bTE3LjEtMS4zIDEuNS0uOUwxMiAwIDIuMiA1LjdsMi42IDEuNS4xLjEgMS43IDEgNS41IDMuMiA1LjEtMyAzLjEtMS45ek0xMiA5LjUgOS4zIDcuOSA3LjQgNi44bC0xLjctMS0uMS0uMWgtLjFMMTIgMS45bDYuNSAzLjhMMTYuMyA3IDEyIDkuNXptOC44LTEuNi0yLjQgMS40LS41LjItNS4zIDMuMVYyNGw5LjktNS43VjYuOWwtMS43IDF6IiBmaWxsPSIjZmZmIi8+PC9zdmc+)](https://www.synapse.org/#!Synapse:syn22277123/wiki/608544 "View the performance of this tool on NLPSandbox.io")
 [![Discord](https://img.shields.io/discord/770484164393828373.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=Discord&logo=discord)](https://nlpsandbox.io/discord "Realtime support / chat with the community and the team")
@@ -16,20 +16,23 @@ processing (NLP) tools on both public and private datasets. Academics, students,
 and industry professionals are invited to browse the available tasks and
 participate by developing and submitting an NLP Sandbox tool.
 
-This repository provides an example implementation of the [NLP Sandbox Date
+This repository provides an example implementation of the [NLP Sandbox PHI
 Annotator API] written in Java-Spring. An NLP Sandbox date annotator takes as
-input a clinical note (text) and outputs a list of predicted date annotations
-found in the clinical note. Here dates are identified using regular expressions.
+input a clinical note (text) and outputs a list of predicted PHI annotations
+found in the clinical note.
 
-This tool is provided to NLP developers who develop in Python as a starting
-point to package their own date annotator as an NLP Sandbox tool (see section
-[Development](#Development)). This section also describes how to generate a tool
-"stub" using [openapi-generator] for 50+ programming languages-frameworks. This
-repository includes a GitHub CI/CD workflow that lints, tests, builds and pushes
-a Docker image of this tool to Synapse Docker Registry. This image of this
-example tool can be submitted as-is on [NLPSandbox.io] to benchmark its
+This tool is provided to NLP developers who develop in Java as a starting
+point to package their own PHI annotator as an NLP Sandbox tool (see section
+[Development](#Development)).
+
+This repository includes a GitHub CI/CD workflow that lints, tests, builds and
+pushes a Docker image of this tool to Synapse Docker Registry. This image of
+this example tool can be submitted as-is on [NLPSandbox.io] to benchmark its
 performance -- just don't expect a high performance!
 
+> See the GitHub repository [nlpsandbox/phi-annotator-example] of a similar tool
+for Python. The README of this repository also document how to create a new PHI
+annotator using [openapi-generator] for 50+ programming languages-frameworks.
 
 ## Contents
 
@@ -45,8 +48,6 @@ performance -- just don't expect a high performance!
   - [Creating a GitHub repository](#Creating-a-GitHub-repository)
   - [Configuring the CI/CD workflow](#Configuring-the-CI/CD-workflow)
   - [Enabling version updates](#Enabling-version-updates)
-  - [Generating a new NLP Sandbox tool using
-    openapi-generator](#Generating-a-new-NLP-Sandbox-tool-using-openapi-generator)
   - [Keeping your tool up-to-date](#Keeping-your-tool-up-to-date)
   - [Testing](#Testing)
   - [Preventing an NLP Sandbox tool from connecting to remote
@@ -60,9 +61,9 @@ performance -- just don't expect a high performance!
 
 ## Specification
 
+- NLP Sandbox tool version: 1.0.0
 - NLP Sandbox schemas version: 1.2.0
-- NLP Sandbox tool version: 1.2.0
-- Docker image: [docker.synapse.org/syn22277123/date-annotator-example-java]
+- Docker image: [docker.synapse.org/syn22277123/phi-annotator-example-java]
 
 
 ## Requirements
@@ -81,6 +82,9 @@ docker compose up --build
 ```
 
 You can stop the container run with `Ctrl+C`, followed by `docker compose down`.
+
+> Note: `docker compose` is not yet available on Linux. Use `docker-compose`
+> instead.
 
 ### Running with Maven
 
@@ -118,7 +122,7 @@ the tool using Docker (production) or Java (development).
 This section describes how to develop your own NLP Sandbox date annotator in
 Python-Flask and other programming languages-frameworks. This example tool is
 also available in Java in the GitHub repository
-[nlpsandbox/date-annotator-example-java].
+[nlpsandbox/phi-annotator-example-java].
 
 ### Development requirements
 
@@ -129,18 +133,7 @@ also available in Java in the GitHub repository
 
 ### Creating a GitHub repository
 
-Depending on the language-frameworks you want to develop with:
-
-- Java-Spring: create a new repository from this [this GitHub template].
-- Python-Flask: create a new repository from the GitHub repository
-  [nlpsandbox/date-annotator-example].
-- Other languages-frameworks: create a brand-new GitHub repository before
-  generating a NLP Sandbox tool stub in section [Generating a new NLP Sandbox
-  tool using
-  openapi-generator](#Generating-a-new-NLP-Sandbox-tool-using-openapi-generator).
-
-You can also use a different code repository hosting service like [GitLab] and
-[Bitbucket].
+Create a new repository from this [this GitHub template].
 
 ### Configuring the CI/CD workflow
 
@@ -176,43 +169,6 @@ making the update effective.
 For more information on Dependabot, please visit the GitHub page [Enabling and
 disabling version updates].
 
-### Generating a new NLP Sandbox tool using openapi-generator
-
-The development of new NLP Sandbox tools is streamlined by using the
-[openapi-generator] to generate tool "stubs" for more than 50 programming
-languages and frameworks. Here a date annotator stub refers to an initial
-implementation that has been automatically generated by [openapi-generator] from
-the [NLP Sandbox Date Annotator API] specification.
-
-Run the command below to get the list of languages-framework supported by the
-[openapi-generator] (under the section `SERVER generators`).
-
-```console
-npx @openapitools/openapi-generator-cli list
-```
-
-Generate the date annotator stub from an empty GitHub repository (here in
-Java-Spring):
-
-```console
-mkdir server
-npx @openapitools/openapi-generator-cli generate \
-  -g spring \
-  -o server \
-  -i https://nlpsandbox.github.io/nlpsandbox-schemas/date-annotator/latest/openapi.json
-```
-
-where the option `-i` refers to the OpenAPI specification of the [NLP Sandbox
-Date Annotator API].
-
-The URL is composed of different elements:
-
-- `date-annotator` - The type of NLP Sandbox tool to generate. The list of all
-  the NLP Sandbox tool types available is defined in the [NLP Sandbox schemas].
-- `latest` - The latest stable version of the [NLP Sandbox schemas]. This token
-  can be replaced by a specific release version `x.y.z` of the [NLP Sandbox
-  schemas].
-
 ### Keeping your tool up-to-date
 
 The NLP Sandbox schemas is updated after receiving contribution from the
@@ -241,7 +197,7 @@ Follow the steps listed below to update your tool.
 
        npm run generate:server:latest
 
-3. Review the updates made to this tool in the [NLP Sandbox schemas CHANGELOG].
+3. Review the updates made to this tool in the NLP Sandbox schemas CHANGELOG.
 
 4. Review and merge the changes. If you are using VS Code, this step can be
    performed relatively easily using the section named "Source Control". This
@@ -321,31 +277,25 @@ Thinking about contributing to this project? Get started by reading our
 <!-- Links -->
 
 [nlpsandbox.io]: https://www.synapse.org/nlpsandbox
-[docker.synapse.org/syn22277123/date-annotator-example-java]: https://www.synapse.org/#!Synapse:syn25830787
+[docker.synapse.org/syn22277123/phi-annotator-example-java]: https://www.synapse.org/TBA
 [Synapse.org]: https://synapse.org
 [openapi-generator]: https://github.com/OpenAPITools/openapi-generator
 [contribution guide]: .github/CONTRIBUTING.md
-[Apache License 2.0]: https://github.com/nlpsandbox/date-annotator-example-java/blob/main/LICENSE
+[Apache License 2.0]: https://github.com/nlpsandbox/phi-annotator-example-java/blob/main/LICENSE
 [Docker Engine]: https://docs.docker.com/engine/install/
 [Node]: https://nodejs.org/en/
 [Java]: https://www.java.com/en/download/help/download_options.html
-[Conda]: https://conda.io/projects/conda/en/latest/user-guide/install/index.html
-[Python]: https://www.python.org/downloads/
 [docker.synapse.org]: https://synapse.org
-[GitLab]: https://about.gitlab.com/
-[Bitbucket]: https://bitbucket.org/product
 [GitHub secrets]: https://docs.github.com/en/actions/reference/encrypted-secrets
 [personal access token]: https://help.synapse.org/docs/Managing-Your-Account.2055405596.html
 [CI/CD workflow]: .github/workflows/ci.yml
 [Dependabot configuration]: .github/dependabot.yml
-[Enabling and disabling version updates]: https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/enabling-and-disabling-version-updates
 [NLP Sandbox schemas]: https://github.com/nlpsandbox/nlpsandbox-schemas
 [nlpsandbox/nlpsandbox-schemas]: https://github.com/nlpsandbox/nlpsandbox-schemas
-[NLP Sandbox Date Annotator API]: https://nlpsandbox.github.io/nlpsandbox-schemas/date-annotator/latest/docs/
-[this GitHub template]: https://github.com/nlpsandbox/date-annotator-example/generate
-[nlpsandbox/date-annotator-example-java]: https://github.com/nlpsandbox/date-annotator-example-java
-[nlpsandbox/date-annotator-example]: https://github.com/nlpsandbox/date-annotator-example
+[NLP Sandbox PHI Annotator API]: https://nlpsandbox.github.io/nlpsandbox-schemas/phi-annotator/latest/docs/
+[this GitHub template]: https://github.com/nlpsandbox/phi-annotator-example-java/generate
+[nlpsandbox/phi-annotator-example-java]: https://github.com/nlpsandbox/phi-annotator-example-java
+[nlpsandbox/phi-annotator-example]: https://github.com/nlpsandbox/phi-annotator-example
 [Patient schema]: https://github.com/nlpsandbox/nlpsandbox-schemas/blob/main/openapi/commons/components/schemas/Patient.yaml
 [semantic versioning]: https://semver.org/
-[NLP Sandbox schemas CHANGELOG]: .github/CHANGELOG.md
 [Apache Maven]: https://maven.apache.org/install.html

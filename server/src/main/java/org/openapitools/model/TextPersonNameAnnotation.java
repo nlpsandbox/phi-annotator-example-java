@@ -6,17 +6,16 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.model.TextAnnotation;
-import org.openapitools.model.TextDateAnnotationAllOf;
 import org.openapitools.jackson.nullable.JsonNullable;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * A date annotation in a text
+ * A person name annotation in a text
  */
-@ApiModel(description = "A date annotation in a text")
+@ApiModel(description = "A person name annotation in a text")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-08-11T13:52:26.252409-07:00[America/Los_Angeles]")
-public class TextDateAnnotation   {
+public class TextPersonNameAnnotation   {
   @JsonProperty("start")
   private Integer start;
 
@@ -29,10 +28,7 @@ public class TextDateAnnotation   {
   @JsonProperty("confidence")
   private Float confidence;
 
-  @JsonProperty("dateFormat")
-  private String dateFormat;
-
-  public TextDateAnnotation start(Integer start) {
+  public TextPersonNameAnnotation start(Integer start) {
     this.start = start;
     return this;
   }
@@ -53,7 +49,7 @@ public class TextDateAnnotation   {
     this.start = start;
   }
 
-  public TextDateAnnotation length(Integer length) {
+  public TextPersonNameAnnotation length(Integer length) {
     this.length = length;
     return this;
   }
@@ -74,7 +70,7 @@ public class TextDateAnnotation   {
     this.length = length;
   }
 
-  public TextDateAnnotation text(String text) {
+  public TextPersonNameAnnotation text(String text) {
     this.text = text;
     return this;
   }
@@ -95,7 +91,7 @@ public class TextDateAnnotation   {
     this.text = text;
   }
 
-  public TextDateAnnotation confidence(Float confidence) {
+  public TextPersonNameAnnotation confidence(Float confidence) {
     this.confidence = confidence;
     return this;
   }
@@ -118,26 +114,6 @@ public class TextDateAnnotation   {
     this.confidence = confidence;
   }
 
-  public TextDateAnnotation dateFormat(String dateFormat) {
-    this.dateFormat = dateFormat;
-    return this;
-  }
-
-  /**
-   * Date format (ISO 8601)
-   * @return dateFormat
-  */
-  @ApiModelProperty(example = "MM/DD/YYYY", value = "Date format (ISO 8601)")
-
-
-  public String getDateFormat() {
-    return dateFormat;
-  }
-
-  public void setDateFormat(String dateFormat) {
-    this.dateFormat = dateFormat;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -147,29 +123,27 @@ public class TextDateAnnotation   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TextDateAnnotation textDateAnnotation = (TextDateAnnotation) o;
-    return Objects.equals(this.start, textDateAnnotation.start) &&
-        Objects.equals(this.length, textDateAnnotation.length) &&
-        Objects.equals(this.text, textDateAnnotation.text) &&
-        Objects.equals(this.confidence, textDateAnnotation.confidence) &&
-        Objects.equals(this.dateFormat, textDateAnnotation.dateFormat);
+    TextPersonNameAnnotation textPersonNameAnnotation = (TextPersonNameAnnotation) o;
+    return Objects.equals(this.start, textPersonNameAnnotation.start) &&
+        Objects.equals(this.length, textPersonNameAnnotation.length) &&
+        Objects.equals(this.text, textPersonNameAnnotation.text) &&
+        Objects.equals(this.confidence, textPersonNameAnnotation.confidence);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(start, length, text, confidence, dateFormat);
+    return Objects.hash(start, length, text, confidence);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TextDateAnnotation {\n");
+    sb.append("class TextPersonNameAnnotation {\n");
     
     sb.append("    start: ").append(toIndentedString(start)).append("\n");
     sb.append("    length: ").append(toIndentedString(length)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    confidence: ").append(toIndentedString(confidence)).append("\n");
-    sb.append("    dateFormat: ").append(toIndentedString(dateFormat)).append("\n");
     sb.append("}");
     return sb.toString();
   }

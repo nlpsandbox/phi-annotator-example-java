@@ -11,24 +11,29 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * Represents the health of a service
+ * TextContactAnnotationAllOf
  */
-@ApiModel(description = "Represents the health of a service")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-08-11T13:52:26.252409-07:00[America/Los_Angeles]")
-public class HealthCheck   {
+public class TextContactAnnotationAllOf   {
   /**
-   * Indicates whether the service status is acceptable or not
+   * Type of contact information
    */
-  public enum StatusEnum {
-    PASS("pass"),
+  public enum ContactTypeEnum {
+    EMAIL("email"),
     
-    FAIL("fail"),
+    FAX("fax"),
     
-    WARN("warn");
+    IP_ADDRESS("ip_address"),
+    
+    PHONE("phone"),
+    
+    URL("url"),
+    
+    OTHER("other");
 
     private String value;
 
-    StatusEnum(String value) {
+    ContactTypeEnum(String value) {
       this.value = value;
     }
 
@@ -43,8 +48,8 @@ public class HealthCheck   {
     }
 
     @JsonCreator
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
+    public static ContactTypeEnum fromValue(String value) {
+      for (ContactTypeEnum b : ContactTypeEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -53,28 +58,28 @@ public class HealthCheck   {
     }
   }
 
-  @JsonProperty("status")
-  private StatusEnum status;
+  @JsonProperty("contactType")
+  private ContactTypeEnum contactType;
 
-  public HealthCheck status(StatusEnum status) {
-    this.status = status;
+  public TextContactAnnotationAllOf contactType(ContactTypeEnum contactType) {
+    this.contactType = contactType;
     return this;
   }
 
   /**
-   * Indicates whether the service status is acceptable or not
-   * @return status
+   * Type of contact information
+   * @return contactType
   */
-  @ApiModelProperty(required = true, value = "Indicates whether the service status is acceptable or not")
+  @ApiModelProperty(required = true, value = "Type of contact information")
   @NotNull
 
 
-  public StatusEnum getStatus() {
-    return status;
+  public ContactTypeEnum getContactType() {
+    return contactType;
   }
 
-  public void setStatus(StatusEnum status) {
-    this.status = status;
+  public void setContactType(ContactTypeEnum contactType) {
+    this.contactType = contactType;
   }
 
 
@@ -86,21 +91,21 @@ public class HealthCheck   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    HealthCheck healthCheck = (HealthCheck) o;
-    return Objects.equals(this.status, healthCheck.status);
+    TextContactAnnotationAllOf textContactAnnotationAllOf = (TextContactAnnotationAllOf) o;
+    return Objects.equals(this.contactType, textContactAnnotationAllOf.contactType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status);
+    return Objects.hash(contactType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class HealthCheck {\n");
+    sb.append("class TextContactAnnotationAllOf {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    contactType: ").append(toIndentedString(contactType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -11,24 +11,37 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * Represents the health of a service
+ * TextLocationAnnotationAllOf
  */
-@ApiModel(description = "Represents the health of a service")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-08-11T13:52:26.252409-07:00[America/Los_Angeles]")
-public class HealthCheck   {
+public class TextLocationAnnotationAllOf   {
   /**
-   * Indicates whether the service status is acceptable or not
+   * Type of location
    */
-  public enum StatusEnum {
-    PASS("pass"),
+  public enum LocationTypeEnum {
+    CITY("city"),
     
-    FAIL("fail"),
+    COUNTRY("country"),
     
-    WARN("warn");
+    DEPARTMENT("department"),
+    
+    HOSPITAL("hospital"),
+    
+    ORGANIZATION("organization"),
+    
+    OTHER("other"),
+    
+    ROOM("room"),
+    
+    STATE("state"),
+    
+    STREET("street"),
+    
+    ZIP("zip");
 
     private String value;
 
-    StatusEnum(String value) {
+    LocationTypeEnum(String value) {
       this.value = value;
     }
 
@@ -43,8 +56,8 @@ public class HealthCheck   {
     }
 
     @JsonCreator
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
+    public static LocationTypeEnum fromValue(String value) {
+      for (LocationTypeEnum b : LocationTypeEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -53,28 +66,28 @@ public class HealthCheck   {
     }
   }
 
-  @JsonProperty("status")
-  private StatusEnum status;
+  @JsonProperty("locationType")
+  private LocationTypeEnum locationType;
 
-  public HealthCheck status(StatusEnum status) {
-    this.status = status;
+  public TextLocationAnnotationAllOf locationType(LocationTypeEnum locationType) {
+    this.locationType = locationType;
     return this;
   }
 
   /**
-   * Indicates whether the service status is acceptable or not
-   * @return status
+   * Type of location
+   * @return locationType
   */
-  @ApiModelProperty(required = true, value = "Indicates whether the service status is acceptable or not")
+  @ApiModelProperty(required = true, value = "Type of location")
   @NotNull
 
 
-  public StatusEnum getStatus() {
-    return status;
+  public LocationTypeEnum getLocationType() {
+    return locationType;
   }
 
-  public void setStatus(StatusEnum status) {
-    this.status = status;
+  public void setLocationType(LocationTypeEnum locationType) {
+    this.locationType = locationType;
   }
 
 
@@ -86,21 +99,21 @@ public class HealthCheck   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    HealthCheck healthCheck = (HealthCheck) o;
-    return Objects.equals(this.status, healthCheck.status);
+    TextLocationAnnotationAllOf textLocationAnnotationAllOf = (TextLocationAnnotationAllOf) o;
+    return Objects.equals(this.locationType, textLocationAnnotationAllOf.locationType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status);
+    return Objects.hash(locationType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class HealthCheck {\n");
+    sb.append("class TextLocationAnnotationAllOf {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    locationType: ").append(toIndentedString(locationType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

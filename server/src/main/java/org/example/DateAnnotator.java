@@ -1,4 +1,4 @@
-package org.nlpsandbox;
+package org.example;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 import org.openapitools.model.TextDateAnnotation;
 
-public class DateExtractor {
+public class DateAnnotator {
 
     class NamedPattern{
         public String name;
@@ -31,34 +31,33 @@ public class DateExtractor {
         }
     }
 
-    static List<NamedPattern> datePatterns;
+    static List<NamedPattern> patterns;
 
-    public DateExtractor(){
-        datePatterns = new ArrayList<>();
-        datePatterns.add(new NamedPattern("MM/DD/YYYY",
+    public DateAnnotator() {
+        patterns = new ArrayList<>();
+        patterns.add(new NamedPattern("MM/DD/YYYY",
             Pattern.compile(
                 "\\b([1-9]|0[1-9]|1[0-2])(/)([1-9]|0[1-9]|1[0-9]|2[0-9]|3[0-1])(/)(19[0-9][0-9]|20[0-9][0-9])")));
 
-        datePatterns.add(new NamedPattern("DD.MM.YYYY",
+        patterns.add(new NamedPattern("DD.MM.YYYY",
             Pattern.compile(
                 "\\b([1-9]|0[1-9]|1[0-9]|2[0-9]|3[0-1])(.)([1-9]|0[1-9]|1[0-2])(.)(19[0-9][0-9]|20[0-9][0-9])")));
 
-        datePatterns.add(new NamedPattern("YYYY",
+        patterns.add(new NamedPattern("YYYY",
             Pattern.compile(
                 "\\b([1-9][1-9][0-9][0-9]|2[0-9][0-9][0-9])")));
 
-        datePatterns.add(new NamedPattern("MMMM",
+        patterns.add(new NamedPattern("MMMM",
             Pattern.compile("\\b(January|February|March|April|May|June|" +
                 "July|August|September|October|November|" +
                 "December)")));
     }
 
-    public List<TextDateAnnotation> findDatesFromString(String sentence){
-
+    public List<TextDateAnnotation> annotate(String text){
         List<TextDateAnnotation> annotations = new ArrayList<>();
-        for (NamedPattern np: datePatterns) {
+        for (NamedPattern np: patterns) {
             // Now create matcher object.
-            Matcher m = np.pattern.matcher(sentence);
+            Matcher m = np.pattern.matcher(text);
             while (m.find()) {
                 annotations.add(new TextDateAnnotation()
                         .start(m.start(0))
@@ -72,11 +71,11 @@ public class DateExtractor {
     }
 
     public static void main(String[] args) {
-        DateExtractor de = new DateExtractor();
+        DateAnnotator dateAnnotator = new DateAnnotator();
         String str1 = "Today is 10/26/2020, and yesterday is 10/25/2020. ";
-        de.findDatesFromString(str1);
+        dateAnnotator.annotate(str1);
 
         String str2 = "Today is 26/11/2020. ";
-        de.findDatesFromString(str2);
+        dateAnnotator.annotate(str2);
     }
 }

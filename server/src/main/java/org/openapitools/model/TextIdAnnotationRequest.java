@@ -11,15 +11,15 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * A request to annotate dates in a clinical note
+ * A request to annotate IDs in a clinical note
  */
-@ApiModel(description = "A request to annotate dates in a clinical note")
+@ApiModel(description = "A request to annotate IDs in a clinical note")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-08-11T13:52:26.252409-07:00[America/Los_Angeles]")
-public class TextDateAnnotationRequest   {
+public class TextIdAnnotationRequest   {
   @JsonProperty("note")
   private Note note;
 
-  public TextDateAnnotationRequest note(Note note) {
+  public TextIdAnnotationRequest note(Note note) {
     this.note = note;
     return this;
   }
@@ -50,8 +50,8 @@ public class TextDateAnnotationRequest   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TextDateAnnotationRequest textDateAnnotationRequest = (TextDateAnnotationRequest) o;
-    return Objects.equals(this.note, textDateAnnotationRequest.note);
+    TextIdAnnotationRequest textIdAnnotationRequest = (TextIdAnnotationRequest) o;
+    return Objects.equals(this.note, textIdAnnotationRequest.note);
   }
 
   @Override
@@ -62,7 +62,7 @@ public class TextDateAnnotationRequest   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TextDateAnnotationRequest {\n");
+    sb.append("class TextIdAnnotationRequest {\n");
     
     sb.append("    note: ").append(toIndentedString(note)).append("\n");
     sb.append("}");

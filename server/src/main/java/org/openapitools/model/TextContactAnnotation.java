@@ -3,20 +3,21 @@ package org.openapitools.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.model.TextAnnotation;
-import org.openapitools.model.TextDateAnnotationAllOf;
+import org.openapitools.model.TextContactAnnotationAllOf;
 import org.openapitools.jackson.nullable.JsonNullable;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * A date annotation in a text
+ * A contact annotation in a text
  */
-@ApiModel(description = "A date annotation in a text")
+@ApiModel(description = "A contact annotation in a text")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-08-11T13:52:26.252409-07:00[America/Los_Angeles]")
-public class TextDateAnnotation   {
+public class TextContactAnnotation   {
   @JsonProperty("start")
   private Integer start;
 
@@ -29,10 +30,53 @@ public class TextDateAnnotation   {
   @JsonProperty("confidence")
   private Float confidence;
 
-  @JsonProperty("dateFormat")
-  private String dateFormat;
+  /**
+   * Type of contact information
+   */
+  public enum ContactTypeEnum {
+    EMAIL("email"),
+    
+    FAX("fax"),
+    
+    IP_ADDRESS("ip_address"),
+    
+    PHONE("phone"),
+    
+    URL("url"),
+    
+    OTHER("other");
 
-  public TextDateAnnotation start(Integer start) {
+    private String value;
+
+    ContactTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static ContactTypeEnum fromValue(String value) {
+      for (ContactTypeEnum b : ContactTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  @JsonProperty("contactType")
+  private ContactTypeEnum contactType;
+
+  public TextContactAnnotation start(Integer start) {
     this.start = start;
     return this;
   }
@@ -53,7 +97,7 @@ public class TextDateAnnotation   {
     this.start = start;
   }
 
-  public TextDateAnnotation length(Integer length) {
+  public TextContactAnnotation length(Integer length) {
     this.length = length;
     return this;
   }
@@ -74,7 +118,7 @@ public class TextDateAnnotation   {
     this.length = length;
   }
 
-  public TextDateAnnotation text(String text) {
+  public TextContactAnnotation text(String text) {
     this.text = text;
     return this;
   }
@@ -95,7 +139,7 @@ public class TextDateAnnotation   {
     this.text = text;
   }
 
-  public TextDateAnnotation confidence(Float confidence) {
+  public TextContactAnnotation confidence(Float confidence) {
     this.confidence = confidence;
     return this;
   }
@@ -118,24 +162,25 @@ public class TextDateAnnotation   {
     this.confidence = confidence;
   }
 
-  public TextDateAnnotation dateFormat(String dateFormat) {
-    this.dateFormat = dateFormat;
+  public TextContactAnnotation contactType(ContactTypeEnum contactType) {
+    this.contactType = contactType;
     return this;
   }
 
   /**
-   * Date format (ISO 8601)
-   * @return dateFormat
+   * Type of contact information
+   * @return contactType
   */
-  @ApiModelProperty(example = "MM/DD/YYYY", value = "Date format (ISO 8601)")
+  @ApiModelProperty(required = true, value = "Type of contact information")
+  @NotNull
 
 
-  public String getDateFormat() {
-    return dateFormat;
+  public ContactTypeEnum getContactType() {
+    return contactType;
   }
 
-  public void setDateFormat(String dateFormat) {
-    this.dateFormat = dateFormat;
+  public void setContactType(ContactTypeEnum contactType) {
+    this.contactType = contactType;
   }
 
 
@@ -147,29 +192,29 @@ public class TextDateAnnotation   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TextDateAnnotation textDateAnnotation = (TextDateAnnotation) o;
-    return Objects.equals(this.start, textDateAnnotation.start) &&
-        Objects.equals(this.length, textDateAnnotation.length) &&
-        Objects.equals(this.text, textDateAnnotation.text) &&
-        Objects.equals(this.confidence, textDateAnnotation.confidence) &&
-        Objects.equals(this.dateFormat, textDateAnnotation.dateFormat);
+    TextContactAnnotation textContactAnnotation = (TextContactAnnotation) o;
+    return Objects.equals(this.start, textContactAnnotation.start) &&
+        Objects.equals(this.length, textContactAnnotation.length) &&
+        Objects.equals(this.text, textContactAnnotation.text) &&
+        Objects.equals(this.confidence, textContactAnnotation.confidence) &&
+        Objects.equals(this.contactType, textContactAnnotation.contactType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(start, length, text, confidence, dateFormat);
+    return Objects.hash(start, length, text, confidence, contactType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TextDateAnnotation {\n");
+    sb.append("class TextContactAnnotation {\n");
     
     sb.append("    start: ").append(toIndentedString(start)).append("\n");
     sb.append("    length: ").append(toIndentedString(length)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    confidence: ").append(toIndentedString(confidence)).append("\n");
-    sb.append("    dateFormat: ").append(toIndentedString(dateFormat)).append("\n");
+    sb.append("    contactType: ").append(toIndentedString(contactType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

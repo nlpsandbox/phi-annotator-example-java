@@ -11,24 +11,37 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * Represents the health of a service
+ * TextIdAnnotationAllOf
  */
-@ApiModel(description = "Represents the health of a service")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-08-11T13:52:26.252409-07:00[America/Los_Angeles]")
-public class HealthCheck   {
+public class TextIdAnnotationAllOf   {
   /**
-   * Indicates whether the service status is acceptable or not
+   * Type of ID information
    */
-  public enum StatusEnum {
-    PASS("pass"),
+  public enum IdTypeEnum {
+    ACCOUNT("account"),
     
-    FAIL("fail"),
+    BIO_ID("bio_id"),
     
-    WARN("warn");
+    DEVICE("device"),
+    
+    HEALTH_PLAN("health_plan"),
+    
+    ID_NUMBER("id_number"),
+    
+    LICENSE("license"),
+    
+    MEDICAL_RECORD("medical_record"),
+    
+    SSN("ssn"),
+    
+    VEHICLE("vehicle"),
+    
+    OTHER("other");
 
     private String value;
 
-    StatusEnum(String value) {
+    IdTypeEnum(String value) {
       this.value = value;
     }
 
@@ -43,8 +56,8 @@ public class HealthCheck   {
     }
 
     @JsonCreator
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
+    public static IdTypeEnum fromValue(String value) {
+      for (IdTypeEnum b : IdTypeEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -53,28 +66,28 @@ public class HealthCheck   {
     }
   }
 
-  @JsonProperty("status")
-  private StatusEnum status;
+  @JsonProperty("idType")
+  private IdTypeEnum idType;
 
-  public HealthCheck status(StatusEnum status) {
-    this.status = status;
+  public TextIdAnnotationAllOf idType(IdTypeEnum idType) {
+    this.idType = idType;
     return this;
   }
 
   /**
-   * Indicates whether the service status is acceptable or not
-   * @return status
+   * Type of ID information
+   * @return idType
   */
-  @ApiModelProperty(required = true, value = "Indicates whether the service status is acceptable or not")
+  @ApiModelProperty(required = true, value = "Type of ID information")
   @NotNull
 
 
-  public StatusEnum getStatus() {
-    return status;
+  public IdTypeEnum getIdType() {
+    return idType;
   }
 
-  public void setStatus(StatusEnum status) {
-    this.status = status;
+  public void setIdType(IdTypeEnum idType) {
+    this.idType = idType;
   }
 
 
@@ -86,21 +99,21 @@ public class HealthCheck   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    HealthCheck healthCheck = (HealthCheck) o;
-    return Objects.equals(this.status, healthCheck.status);
+    TextIdAnnotationAllOf textIdAnnotationAllOf = (TextIdAnnotationAllOf) o;
+    return Objects.equals(this.idType, textIdAnnotationAllOf.idType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status);
+    return Objects.hash(idType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class HealthCheck {\n");
+    sb.append("class TextIdAnnotationAllOf {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    idType: ").append(toIndentedString(idType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
