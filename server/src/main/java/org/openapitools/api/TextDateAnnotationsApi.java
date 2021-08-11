@@ -6,8 +6,8 @@
 package org.openapitools.api;
 
 import org.openapitools.model.Error;
-import org.openapitools.model.TextDateAnnotationRequest;
 import org.openapitools.model.TextDateAnnotation;
+import org.openapitools.model.TextDateAnnotationRequest;
 import org.openapitools.model.TextDateAnnotationResponse;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import org.nlpsandbox.DateExtractor;
+import org.example.DateAnnotator;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-08-11T13:52:26.252409-07:00[America/Los_Angeles]")
 @Validated
@@ -57,8 +57,8 @@ public interface TextDateAnnotationsApi {
     )
     default ResponseEntity<TextDateAnnotationResponse> createTextDateAnnotations(@ApiParam(value = ""  )  @Valid @RequestBody(required = false) TextDateAnnotationRequest textDateAnnotationRequest) {
         String text = textDateAnnotationRequest.getNote().getText();
-        List<TextDateAnnotation> annotations = new DateExtractor()
-            .findDatesFromString(text);
+        List<TextDateAnnotation> annotations = new DateAnnotator()
+            .annotate(text);
         TextDateAnnotationResponse res = new TextDateAnnotationResponse()
             .textDateAnnotations(annotations);
 
