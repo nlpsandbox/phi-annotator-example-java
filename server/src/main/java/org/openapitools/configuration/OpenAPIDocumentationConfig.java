@@ -17,15 +17,14 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.servlet.ServletContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-20T21:46:49.832722-07:00[America/Los_Angeles]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-08-11T13:52:26.252409-07:00[America/Los_Angeles]")
 @Configuration
 @EnableSwagger2
 public class OpenAPIDocumentationConfig {
 
     ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-            .title("NLP Sandbox Date Annotator API")
-            .description("")
+            .title("NLP Sandbox PHI Annotator API")
             .license("Apache 2.0")
             .licenseUrl("https://github.com/nlpsandbox/nlpsandbox-schemas/blob/main/LICENSE")
             .termsOfServiceUrl("https://nlpsandbox.io")
@@ -35,7 +34,7 @@ public class OpenAPIDocumentationConfig {
     }
 
     @Bean
-    public Docket customImplementation(ServletContext servletContext, @Value("${openapi.nLPSandboxDateAnnotator.base-path:/api/v1}") String basePath) {
+    public Docket customImplementation(ServletContext servletContext, @Value("${openapi.nLPSandboxPHIAnnotator.base-path:/api/v1}") String basePath) {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                     .apis(RequestHandlerSelectors.basePackage("org.openapitools.api"))

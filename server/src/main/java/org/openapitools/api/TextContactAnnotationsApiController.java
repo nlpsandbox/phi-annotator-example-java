@@ -7,12 +7,12 @@ import java.util.Optional;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-08-11T13:52:26.252409-07:00[America/Los_Angeles]")
 @Controller
 @RequestMapping("${openapi.nLPSandboxPHIAnnotator.base-path:/api/v1}")
-public class HealthCheckApiController implements HealthCheckApi {
+public class TextContactAnnotationsApiController implements TextContactAnnotationsApi {
 
     private final NativeWebRequest request;
 
     @org.springframework.beans.factory.annotation.Autowired
-    public HealthCheckApiController(NativeWebRequest request) {
+    public TextContactAnnotationsApiController(NativeWebRequest request) {
         this.request = request;
     }
 

@@ -4,9 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.NativeWebRequest;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-02-25T15:53:35.186246-08:00[America/Los_Angeles]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-08-11T13:52:26.252409-07:00[America/Los_Angeles]")
 @Controller
-@RequestMapping("${openapi.nLPSandboxDateAnnotator.base-path:/api/v1}")
+@RequestMapping("${openapi.nLPSandboxPHIAnnotator.base-path:/api/v1}")
 public class TextDateAnnotationsApiController implements TextDateAnnotationsApi {
 
     private final NativeWebRequest request;
