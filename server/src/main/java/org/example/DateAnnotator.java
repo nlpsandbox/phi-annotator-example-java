@@ -31,23 +31,23 @@ public class DateAnnotator {
         }
     }
 
-    static List<NamedPattern> datePatterns;
+    static List<NamedPattern> patterns;
 
     public DateAnnotator() {
-        datePatterns = new ArrayList<>();
-        datePatterns.add(new NamedPattern("MM/DD/YYYY",
+        patterns = new ArrayList<>();
+        patterns.add(new NamedPattern("MM/DD/YYYY",
             Pattern.compile(
                 "\\b([1-9]|0[1-9]|1[0-2])(/)([1-9]|0[1-9]|1[0-9]|2[0-9]|3[0-1])(/)(19[0-9][0-9]|20[0-9][0-9])")));
 
-        datePatterns.add(new NamedPattern("DD.MM.YYYY",
+        patterns.add(new NamedPattern("DD.MM.YYYY",
             Pattern.compile(
                 "\\b([1-9]|0[1-9]|1[0-9]|2[0-9]|3[0-1])(.)([1-9]|0[1-9]|1[0-2])(.)(19[0-9][0-9]|20[0-9][0-9])")));
 
-        datePatterns.add(new NamedPattern("YYYY",
+        patterns.add(new NamedPattern("YYYY",
             Pattern.compile(
                 "\\b([1-9][1-9][0-9][0-9]|2[0-9][0-9][0-9])")));
 
-        datePatterns.add(new NamedPattern("MMMM",
+        patterns.add(new NamedPattern("MMMM",
             Pattern.compile("\\b(January|February|March|April|May|June|" +
                 "July|August|September|October|November|" +
                 "December)")));
@@ -55,7 +55,7 @@ public class DateAnnotator {
 
     public List<TextDateAnnotation> annotate(String text){
         List<TextDateAnnotation> annotations = new ArrayList<>();
-        for (NamedPattern np: datePatterns) {
+        for (NamedPattern np: patterns) {
             // Now create matcher object.
             Matcher m = np.pattern.matcher(text);
             while (m.find()) {

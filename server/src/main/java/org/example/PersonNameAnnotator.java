@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.openapitools.model.TextContactAnnotation;
+import org.openapitools.model.TextPersonNameAnnotation;
 
-public class ContactAnnotator {
+public class PersonNameAnnotator {
 
     class NamedPattern{
         public String name;
@@ -33,22 +33,21 @@ public class ContactAnnotator {
 
     static List<NamedPattern> patterns;
 
-    public ContactAnnotator(){
+    public PersonNameAnnotator() {
         patterns = new ArrayList<>();
         // TODO Add contact patterns
     }
 
-    public List<TextContactAnnotation> annotate(String text){
-        List<TextContactAnnotation> annotations = new ArrayList<>();
+    public List<TextPersonNameAnnotation> annotate(String text){
+        List<TextPersonNameAnnotation> annotations = new ArrayList<>();
         for (NamedPattern np: patterns) {
             // Now create matcher object.
             Matcher m = np.pattern.matcher(text);
             while (m.find()) {
-                annotations.add(new TextContactAnnotation()
+                annotations.add(new TextPersonNameAnnotation()
                         .start(m.start(0))
                         .length(m.group(0).length())
                         .text(m.group(0))
-                        .contactType(TextContactAnnotation.ContactTypeEnum.OTHER)
                         .confidence(95.5f));
             }
         }
