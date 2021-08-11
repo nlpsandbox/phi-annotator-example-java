@@ -6,6 +6,7 @@
 package org.openapitools.api;
 
 import org.openapitools.model.Error;
+import org.openapitools.model.TextLocationAnnotation;
 import org.openapitools.model.TextLocationAnnotationRequest;
 import org.openapitools.model.TextLocationAnnotationResponse;
 import io.swagger.annotations.*;
@@ -23,6 +24,9 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
+import org.example.LocationAnnotator;
+
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-08-11T13:52:26.252409-07:00[America/Los_Angeles]")
 @Validated
 @Api(value = "textLocationAnnotations", description = "the textLocationAnnotations API")
@@ -42,7 +46,7 @@ public interface TextLocationAnnotationsApi {
      *         or The request cannot be fulfilled due to an unexpected server error (status code 500)
      */
     @ApiOperation(value = "Annotate locations in a clinical note", nickname = "createTextLocationAnnotations", notes = "Return the location annotations found in a clinical note", response = TextLocationAnnotationResponse.class, tags={ "TextLocationAnnotation", })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Success", response = TextLocationAnnotationResponse.class),
         @ApiResponse(code = 400, message = "Invalid request", response = Error.class),
         @ApiResponse(code = 500, message = "The request cannot be fulfilled due to an unexpected server error", response = Error.class) })
@@ -52,17 +56,13 @@ public interface TextLocationAnnotationsApi {
         consumes = { "application/json" }
     )
     default ResponseEntity<TextLocationAnnotationResponse> createTextLocationAnnotations(@ApiParam(value = ""  )  @Valid @RequestBody(required = false) TextLocationAnnotationRequest textLocationAnnotationRequest) {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"textLocationAnnotations\" : [ { \"start\" : 42, \"length\" : 7, \"text\" : \"Seattle\", \"locationType\" : \"city\", \"confidence\" : 95.5 }, { \"start\" : 42, \"length\" : 7, \"text\" : \"Seattle\", \"locationType\" : \"city\", \"confidence\" : 95.5 } ] }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+        String text = textLocationAnnotationRequest.getNote().getText();
+        List<TextLocationAnnotation> annotations = new LocationAnnotator()
+            .annotate(text);
+        TextLocationAnnotationResponse res = new TextLocationAnnotationResponse()
+            .textLocationAnnotations(annotations);
 
+        return new ResponseEntity<TextLocationAnnotationResponse>(res, HttpStatus.OK);
     }
 
 }
