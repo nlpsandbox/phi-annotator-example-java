@@ -1,0 +1,15 @@
+{
+    "devDependencies": {
+        "@openapitools/openapi-generator-cli": "2.3.9"
+    },
+    "private": true,
+    "scripts": {
+        "generate:server": "openapi-generator-cli generate -g spring -o server -i $npm_config_openapi",
+        "generate:server:latest": "openapi-generator-cli generate -g spring -o server -i https://nlpsandbox.github.io/nlpsandbox-schemas/date-annotator/latest/openapi.json",
+        "generate:server:edge": "openapi-generator-cli generate -g spring -o server -i https://nlpsandbox.github.io/nlpsandbox-schemas/date-annotator/edge/openapi.json",
+        "generate:server:version": "openapi-generator-cli generate -g spring -o server -i https://nlpsandbox.github.io/nlpsandbox-schemas/date-annotator/$npm_config_schemas_version/openapi.json",
+        "install:dependencies": "npm ci",
+        "start:dev": "cd server && mvn clean package && java -jar target/openapi-spring-1.2.0.jar",
+        "start:prod": "docker compose up --build"
+    }
+}
